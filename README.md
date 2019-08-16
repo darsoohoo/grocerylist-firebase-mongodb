@@ -2,7 +2,7 @@
 Problem: The need for a family to share one central list and quickly add items in real time.
 
 
-Solution: This solution uses a React and front end and an Express backend. Originally the solution was only going to be using React and not Node. The Firebase database is a free real time database that offers Facebook and Google oAuth, so there was minimal work to get implement authentication into the app. The Jest testing tool comes with React when create-react-app is used to create the app, so I decided to use Jest. 
+Solution: This solution uses a React and front end and an Express backend. Originally the solution was only going to be using React and not Node. The Firebase database is a free real time database that offers Facebook authentication, so there was minimal work to get implement authentication into the app. The Jest testing tool comes with React when create-react-app is used to create the app, so I decided to use Jest. 
 
 Realizing this was a "true" full-stack project since it didn't have a backend server and database like MongoDB or PostgreSQL, I decided to integrate my React app with Node, Express and a MongoDB. Jasmine was the tool of choice for testing the backend. 
 
