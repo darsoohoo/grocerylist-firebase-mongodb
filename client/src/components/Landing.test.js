@@ -3,8 +3,6 @@ import { mount } from 'enzyme';
 import Landing from './Landing';
 
 
-
-const props = { landing: { text: 'test_landing' } }
 let landing = mount(<Landing  />);
 
 describe('Landing', () => {

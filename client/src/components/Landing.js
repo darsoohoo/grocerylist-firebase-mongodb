@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
-import Link from '@material-ui/core/Link'
+import React, { Component } from 'react';
 import axios from 'axios';
 import Checkbox from '@material-ui/core/Checkbox';
-import Navbar from './Navbar'
+
 
 
 export class Landing extends Component {
@@ -12,8 +11,7 @@ export class Landing extends Component {
             items: [],
             itemInput: '',
             item: '',
-            isLoaded: false,
-            editMode: false
+            isLoaded: false
         }
         this.removeItem = this.removeItem.bind(this)
        
