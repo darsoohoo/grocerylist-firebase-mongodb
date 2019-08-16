@@ -1,6 +1,6 @@
 const request = require("request");
 const server = require("../../server");
-const base = "http://localhost:5000/topics/";
+const base = "http://localhost:5000/items/";
 
 describe("routes : items", () => {
 
