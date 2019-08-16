@@ -12,7 +12,7 @@ export class Landing extends Component {
             isLoaded: false
         }
     }
-    
+     
 
     componentDidMount() {
         fetch('./api/items')
