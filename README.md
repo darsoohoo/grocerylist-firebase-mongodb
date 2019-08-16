@@ -39,15 +39,27 @@ The server must not be running when running npm test on the root.
 # Step 4
 **End-User Flows**
 
-1. Authentication
-    1.1 Hit the Google button to log in with a Google account
-    1.2 Hit the Facebook button to log in with a Facebook account
-    1.3 Hit the signout button at the top right corner to log out
+1. Authentication <br>
+    1.1 Hit the Google button to log in with a Google account <br>
+    1.2 Hit the Facebook button to log in with a Facebook account <br>
+    1.3 Hit the signout button at the top right corner to log out <br>
 
 
-2. Grocery List
-    2.1 Enter in an item in the textbox and hit the Enter key to add an item to the list 
-    2.2 Click the remove button to remove an item from the list
-    2.3 Click the checkbox the update an item as purchased or unpurchased
+2. Grocery List <br>
+    2.1 Enter in an item in the textbox and hit the Enter key to add an item to the list <br>
+    2.2 Click the remove button to remove an item from the list <br>
+    2.3 Click the checkbox the update an item as purchased or unpurchased <br>
     
     Feature Incomplete - Update the item 
+
+
+### Tools
+- React
+- Material Design Lite
+- Jasmine
+- Jest
+- Firebase Authentication
+- Firebase Database
+- Nodejs
+- Express
+- MongoDB
