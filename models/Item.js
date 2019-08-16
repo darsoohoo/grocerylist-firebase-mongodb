@@ -5,6 +5,9 @@ const ItemSchema = new mongoose.Schema({
   item: {
     type: String
   },
+  purchased: {
+    type: Boolean
+  },
   date: {
     type: Date,
     default: Date.now

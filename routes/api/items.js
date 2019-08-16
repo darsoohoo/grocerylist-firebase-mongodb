@@ -1,11 +1,7 @@
 const express = require('express')
 const router = express.Router();
 const Item = require('../../models/Item')
-const { check, validationResult } = require('express-validator/check');
 
-// @route   POST api/items
-// @desc    Get all items
-// @access  Public
 
 router.get('/', async (req, res) => {
     try {
@@ -18,50 +14,13 @@ router.get('/', async (req, res) => {
 });
 
 
-// @route    GET api/items/:id
-// @desc     Get post by ID
-// @access   Private
-router.get('/:id',     [
-    check('text', 'Text is required')
-      .not()
-      .isEmpty()
-  ], async (req, res) => {
-    try {
-      const item = await Item.findById(req.params.id);
-  
-      if (!item) {
-        return res.status(404).json({ msg: 'Post not found' });
-      }
-  
-      res.json(item);
-    } catch (err) {
-      console.error(err.message);
-      if (err.kind === 'ObjectId') {
-        return res.status(404).json({ msg: 'Post not found' });
-      }
-      res.status(500).send('Server Error');
-    }
-});
-
-
-
-// @route    POST api/items/
-// @desc     POST item
-// @access   Public
-router.post('/', 
-[
-    check('text', 'Text is required')
-      .not()
-      .isEmpty()
-  ],
-  
-  async (req, res) => {
-   
+router.post('/', (req, res) => {
     const newItem = new Item({
-        item: req.body.item
+        item: req.body.itemInput,
+        purchased: req.body.purchased
     })
-    const item = await newItem.save()
-    res.json(item);
+
+    newItem.save().then(item => res.json(quote));
 });
 
 

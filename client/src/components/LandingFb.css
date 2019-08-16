@@ -1,0 +1,17 @@
+.Aligner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .Aligner-item {
+    max-width: 50%;
+  }
+
+  #input-form {
+      width: 100%;
+  }
+
+.component-landing{
+    margin-top: 50px;
+}
