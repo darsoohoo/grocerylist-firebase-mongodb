@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './LandingFb.css'
-
 import Checkbox from '@material-ui/core/Checkbox';
 
 
@@ -62,16 +61,16 @@ class LandingFb extends Component {
             this.props.firebase.database().ref(`items/${itemKey}`).update({
                 purchased: false
             })
-            alert ("Returned");
         } else {
             // change to true
             this.props.firebase.database().ref(`items/${itemKey}`).update({
                 purchased: true
             })
-            alert ("Purchased");
+            
         }
-
+        
         this.setState(items => this.setState({ items: this.state.items}, () => console.log('item setstate...', items)))
+        window.location.reload();
     }
 
 
@@ -114,7 +113,7 @@ class LandingFb extends Component {
                                 <tbody>
                                 {this.state.items.map((item, index) => (
                                     <tr key={item.key}>
-                                        <td><button >Edit</button></td>
+                                        <td><button>Edit</button></td>
                                         <td>{index+1}</td>
                                         <td>{item.name}</td>
                                         <td>

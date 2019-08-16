@@ -12,6 +12,7 @@ export class Landing extends Component {
             itemInput: '',
             isLoaded: false
         }
+        this.removeItem = this.removeItem.bind(this)
     }
     
 
@@ -30,13 +31,11 @@ export class Landing extends Component {
     };
 
     submitHandler = event => {
-        event.preventDefault();
-        
-      
+        const itemInput = this.state.itemInput
     
             const addItem = async data => {
                 const newItem = {
-                    itemInput: data.itemInput,
+                    itemInput: data,
                     purchased: false
                 }
     
@@ -53,21 +52,43 @@ export class Landing extends Component {
                 console.log(err.response.data)
                }
             }
+            addItem(itemInput);
     
-            addItem(event);
-            console.log("item added")
-    
-  
-         
         };
+
+        removeItem(id) {
+            axios.delete('/api/items/'+id)
+              .then(response => { console.log(response.data)});
+        
+            this.setState({
+              items: this.state.items.filter(item => item._id !== id)
+            })
+        }
+
+        updateItem(id, newItem, checkboxValue) {
+            //e.preventDefault();
+            let purchased;
+
+            if(checkboxValue === true){ purchased = false
+                } else { 
+                purchased = true
+            }
+            const item = {  
+              item: newItem,
+              purchased: purchased,
+            }
+        
+            axios.post('/api/items/update/' + id, item)
+              .then(res => console.log(res.data));
+        
+            window.location = '/';
+          }
       
         
     render() {
 
-        const listStyle = {
-            marginLeft: "40%",
-            marginRight: "50%",
-            marginTop: "200px"
+        const buttonStyle = {
+            visibility: "hidden"
         }
 
         return (
@@ -82,19 +103,14 @@ export class Landing extends Component {
                                    
                                     onChange={this.handleChange('itemInput')}
                                     value={this.state.itemInput}
-                               
-            
                                     margin="normal"
-                                    variant="outlined"
                                     label="Grocery item"
                                     className="item-input-table"
                                     id="item-input"
                                     name="itemInput"
                                     />
-                                <label class="mdl-textfield__label" for="sample3">Enter an item...</label>
-                                <button  type="submit" id="submit-request" className="field mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-                                    Add Item
-                                </button>  
+                                <label className="mdl-textfield__label" for="sample3">Enter an item...</label>
+                                <input style={buttonStyle} type="submit"></input>
                             </div>
                         
                             </form>                 
@@ -112,7 +128,7 @@ export class Landing extends Component {
                                 </thead>
                                 <tbody>
                                 {this.state.items.map((item, index) => (
-                                    <tr key={item.key}>
+                                    <tr key={item._id}>
                                         <td><button >Edit</button></td>
                                         <td>{index+1}</td>
                                         <td>{item.item}</td>
@@ -120,11 +136,11 @@ export class Landing extends Component {
                                        
                                                 <Checkbox type="checkbox" 
                                                     checked={item.purchased} 
-                                                    onClick={() => this.checkboxChange(item.purchased, item.key)} 
+                                                    onClick={() => this.updateItem(item._id, item.item, item.purchased)} 
                                                 />
 
                                         </td>
-                                        <td><button onClick={() => this.removeItem(item.key)} className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" >Remove</button></td>
+                                        <td><button onClick={() => this.removeItem(item._id)} className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" >Remove</button></td>
                                     </tr>
                                     ))}
                                     

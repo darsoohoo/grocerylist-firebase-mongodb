@@ -20,9 +20,28 @@ router.post('/', (req, res) => {
         purchased: req.body.purchased
     })
 
-    newItem.save().then(item => res.json(quote));
+    newItem.save().then(item => res.json(item));
 });
 
+
+
+router.delete('/:id', (req, res) => {
+      Item.findByIdAndDelete(req.params.id)
+      .then(() => res.json('Item deleted.'))
+      .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/update/:id').post((req, res) => {
+  Item.findById(req.params.id)
+    .then(item => {
+      item.item = req.body.item;
+      item.purchased = req.body.purchased;
+      item.save()
+        .then(() => res.json('Item updated!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
+    .catch(err => res.status(400).json('Error: ' + err));
+});
 
 
 
