@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './LandingFb.css'
+import './LandingFb.css';
+import Link from '@material-ui/core/Link';
 import Checkbox from '@material-ui/core/Checkbox';
 
 
@@ -11,7 +12,8 @@ class LandingFb extends Component {
             newItem: '',
             items: [],
             item: '',
-            purchased: false
+            purchased: false,
+            editMode: false
         }
         this.itemsRef = this.props.firebase.database().ref('items')
     }
@@ -74,28 +76,46 @@ class LandingFb extends Component {
     }
 
 
+   
+        startEdit = () => {
+            const { editMode } = this.state;
+            this.setState({
+                editMode: true
+            });
+        }
+
+        stopEdit = () => {
+            const { editMode } = this.state;
+            this.setState({
+                editMode: false
+            });
+        }
+
+
     render(){
-        return (
-            <div className="component-landing">
+        const { editMode } = this.state;
+
+        switch (editMode){
+            case true: 
+            return (
+                <div className="component-landing">
                 <div className="Aligner flex-container">
                     <div id="grocery-table" className="mdl-data-table mdl-js-data-table mdl-button--colored">  
                         <div className="Aligner-item item-input-table">   
-        
                             <form id="input-form" onSubmit={(e) => this.addItem(e)}>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                 <input  onChange={(e) => this.handleChange(e)}
                                     value={this.state.newItem}
                                     id="outlined-name"
                                     margin="normal"
                                     variant="outlined"
                                     label="Grocery item"
-                                    className="item-input-table"
+                                    className="mdl-textfield__input"
                                     id="item-input"
                                     name="newItem"
-            
-                                    class="mdl-textfield__input" 
                                     type="text" />
-                                <label class="mdl-textfield__label" for="sample3">Enter an item...</label>
+                                <label className="mdl-textfield__label" htmlFor="sample3">Enter an item...</label>
+                                <Link href="#" onClick={() => this.stopEdit()} >Cancel</Link>
                             </div>
                             </form>                 
  
@@ -103,7 +123,6 @@ class LandingFb extends Component {
 
                                 <thead>
                                     <tr>
-                                        <th></th>
                                         <th>#</th>
                                         <th className="name">Name</th>
                                         <th className="price">Purchased</th>
@@ -113,17 +132,73 @@ class LandingFb extends Component {
                                 <tbody>
                                 {this.state.items.map((item, index) => (
                                     <tr key={item.key}>
-                                        <td><button>Edit</button></td>
+                                        <td>{index+1}</td>
+                                        <td><input type="text" value={item.item}></input></td>
+                                        <td>
+                                            <Checkbox type="checkbox" 
+                                                checked={item.purchased} 
+                                                onClick={() => this.checkboxChange(item.purchased, item.key)} 
+                                            />
+                                        </td>
+                                        <td><button onClick={() => this.removeItem(item.key)} className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" >Remove</button></td>
+                                    </tr>
+                                    ))}
+                                    
+                                </tbody>
+                            </table>
+                            <button onClick={() => this.stopEdit()}>Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            );
+            default:
+                return (
+
+
+                <div className="component-landing">
+                <div className="Aligner flex-container">
+                    <div id="grocery-table" className="mdl-data-table mdl-js-data-table mdl-button--colored">  
+                        <div className="Aligner-item item-input-table">   
+
+                            <form id="input-form" onSubmit={(e) => this.addItem(e)}>
+                            <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input  onChange={(e) => this.handleChange(e)}
+                                    value={this.state.newItem}
+                                    id="outlined-name"
+                                    margin="normal"
+                                    variant="outlined"
+                                    label="Grocery item"
+                                    className="mdl-textfield__input"
+                                    id="item-input"
+                                    name="newItem"
+                                    type="text" />
+                                <label className="mdl-textfield__label" htmlFor="sample3">Enter an item...</label>
+                                <Link href="#" onClick={() => this.startEdit()} >Edit</Link>
+                            </div>
+                            </form>                 
+
+                            <table data-test="component-table" className="table flex mdl-data-table mdl-js-data-table mdl-button--colored" >
+
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th className="name">Name</th>
+                                        <th className="price">Purchased</th>
+                                        <th className="add">Remove</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {this.state.items.map((item, index) => (
+                                    <tr key={item.key}>
                                         <td>{index+1}</td>
                                         <td>{item.name}</td>
                                         <td>
-                                       
-                                                <Checkbox type="checkbox" 
-                                                    checked={item.purchased} 
-                                                    onClick={() => this.checkboxChange(item.purchased, item.key)} 
-                                                    
-                                                />
-
+                                            <Checkbox type="checkbox" 
+                                                checked={item.purchased} 
+                                                onClick={() => this.checkboxChange(item.purchased, item.key)} 
+                                            />
                                         </td>
                                         <td><button onClick={() => this.removeItem(item.key)} className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" >Remove</button></td>
                                     </tr>
@@ -134,8 +209,9 @@ class LandingFb extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
-        )
+                </div>
+            )
+        }
     }
 }
 

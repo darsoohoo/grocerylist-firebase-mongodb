@@ -8,8 +8,6 @@ const props = { landing: { text: 'test_landing' } }
 let landing = mount(<Landing  />);
 
 describe('Landing', () => {
-
-  //  let landing = mount(<Landing {...props} />);
     
     it('renders Landing without crashing', () => {
         mount(<Landing />);
@@ -22,28 +20,14 @@ describe('Landing', () => {
 
 describe('when rendering the form', () => {
     it('creates a Form component', () => {
-      expect(landing.find('Form').exists()).toBe(true);
+      expect(landing.find('form').exists()).toBe(true);
     });
 
     it('renders a FormControl component', () => {
-      expect(landing.find('FormControl').exists()).toBe(true);
+      expect(landing.find('input').exists()).toBe(true);
     });
 
   });
 
 
-describe('when adding a grocery item', () => {
-    
-    let testItem = 'burgers';
-    beforeEach(() => {
-       
-        landing.find('FormControl').simulate('change', {
-            target: { value: testItem }
-        });
-    });
-
-    it('updates the text in state', () => {
-        expect(landing.state().newItem).toEqual(testItem);
-    });
-})
 
