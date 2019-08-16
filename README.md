@@ -9,32 +9,39 @@ Realizing this was a "true" full-stack project since it didn't have a backend se
 If it was my choice, I would try to accomplish everything using just Firebase and React. However, I felt it was a little confusing testing the Firebase DB and React library since it was my first time. Testing with MongoDb also was a little confusing. Next time, I may consider something I'm more familiar with so I don't spend too much time on learning the tools.
 
 
-# Setup
+# Step 1
 
+Clone the project
+
+# Step 2
 ### `npm install`
 
 Use this command to install dependencies before running the app.
 
 Install dependencies at the root directory and in the client directory.
 
-
+# Step 3
 ### `npm run dev`
 
-Use this command to run the Express server on Local 5000 and the React app on 3000.
+Use this command to start the app locally.
+Node will run on 5000 and React on 3000
 
-
-
+#optional
 ### `npm start`
 
 Runs the Express app<br>
 Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
 
-
+#optional
 ### `npm test`
 
-Run npm test at the root to test the server and run npm test in the client directory to test the front-end.<br>
+Run npm test at the root to test the server and run npm test in the client directory to test the front-end.
+
+The server must not be running when running npm test on the root.
+<br>
 
 
+# Step 4
 **End-User Flows**
 
 1. Authentication
@@ -48,4 +55,4 @@ Run npm test at the root to test the server and run npm test in the client direc
     2.2 Click the remove button to remove an item from the list
     2.3 Click the checkbox the update an item as purchased or unpurchased
     
-    Incomplete - Update the item 
+    Feature Incomplete - Update the item 
