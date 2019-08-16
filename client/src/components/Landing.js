@@ -29,10 +29,6 @@ export class Landing extends Component {
             console.log(`An error occured: ${e}`)
         });
 
-        
-
-        
-        
     }
 
     handleChange = input => e => {
