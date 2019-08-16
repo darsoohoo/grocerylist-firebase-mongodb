@@ -191,7 +191,7 @@ export class Landing extends Component {
                         <div id="grocery-table" className="mdl-data-table mdl-js-data-table mdl-button--colored">  
                             <div className="Aligner-item item-input-table">   
                                 <form id="input-form"  onSubmit={this.submitHandler} >
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                     <input  
                                         onChange={this.handleChange('itemInput')}
                                         value={this.state.itemInput}
