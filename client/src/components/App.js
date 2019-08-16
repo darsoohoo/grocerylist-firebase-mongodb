@@ -57,8 +57,9 @@ class App extends Component {
             {this.state.isSignedIn ? (
               
               <div>
-                <Landing />
                 < LandingFb firebase={firebase} />
+                <Landing />
+              
               </div>
 
             ) : (

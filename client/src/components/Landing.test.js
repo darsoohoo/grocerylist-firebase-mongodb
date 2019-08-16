@@ -5,6 +5,7 @@ import Landing from './Landing';
 
 let landing = mount(<Landing  />);
 
+
 describe('Landing', () => {
     
     it('renders Landing without crashing', () => {
@@ -21,7 +22,7 @@ describe('when rendering the form', () => {
       expect(landing.find('form').exists()).toBe(true);
     });
 
-    it('renders a FormControl component', () => {
+    it('renders a text input', () => {
       expect(landing.find('input').exists()).toBe(true);
     });
 

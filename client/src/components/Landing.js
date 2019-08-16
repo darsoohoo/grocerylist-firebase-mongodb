@@ -13,9 +13,6 @@ export class Landing extends Component {
             item: '',
             isLoaded: false
         }
-        this.removeItem = this.removeItem.bind(this)
-       
-   
     }
     
 
