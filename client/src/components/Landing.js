@@ -117,74 +117,7 @@ export class Landing extends Component {
         const { editMode } = this.state;
         const buttonStyle = {
             visibility: "hidden"
-        }
-
-    
-
-
-
-        switch (editMode){
-            case true: 
-            return (
-                <div className="component-landing">
-                    <div className="Aligner flex-container">
-                        <div id="grocery-table" className="mdl-data-table mdl-js-data-table mdl-button--colored">  
-                            <div className="Aligner-item item-input-table mdl-textfield mdl-js-textfield mdl-textfield--floating-label">   
-                            
-                                <form id="input-form"  onSubmit={this.submitHandler} >
-                                <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                
-                                    <input  
-                                        onChange={this.handleChange('itemInput')}
-                                        value={this.state.itemInput}
-                                        margin="normal"
-                                        label="Grocery item"
-                                        className="mdl-textfield__input"
-                                        id="item-input"
-                                        name="itemInput"
-                                        />
-                                    <label className="mdl-textfield__label" htmlFor="sample3">Enter an item...</label>
-                                    <input style={buttonStyle} type="submit"></input>                                   
-                                </div>
-                                </form>                 
-                                <table data-test="component-table" className="table flex mdl-data-table mdl-js-data-table mdl-button--colored" >
-                                    <thead>
-                                        <tr>
-                                            <th>Update</th>
-                                            <th>#</th>
-                                            <th className="name">Name</th>
-                                            <th className="price">Purchased</th>
-                                            <th className="add">Remove</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    {this.state.items.map((item, index) => (
-                                        <tr key={item._id}>
-                                            <td><button onClick={() => this.updateItem(item._id, item.item, item.purchased)} >Update</button></td>
-                                            <td>{index+1}</td>
-                                            <td><input type="text" placeholder={item.item} 
-                                            
-                                            
-                                            
-                                            value={item.item} onChange={this.handleChange('item')}/></td>
-                                            <td>       
-                                                <Checkbox type="checkbox" 
-                                                    checked={item.purchased} 
-                                                    onClick={() => this.updateItem(item._id, item.item, item.purchased)} 
-                                                />
-                                            </td>
-                                            <td><button onClick={() => this.removeItem(item._id)} className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" >Remove</button></td>
-                                        </tr>
-                                        ))}   
-                                    </tbody>
-                                </table>
-                                <button onClick={() => this.stopEdit()}>Cancel</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            );
-            default:
+        }    
                 return (
                     <div className="component-landing">
                     <div className="Aligner flex-container">
@@ -203,10 +136,11 @@ export class Landing extends Component {
                                         />
                                     <label className="mdl-textfield__label" htmlFor="sample3">Enter an item...</label>
                                     <input style={buttonStyle} type="submit"></input>
-                                    <Link href="#" onClick={() => this.startEdit()} >Edit</Link>
+                                    MongoDb
                                 </div>
                                 </form>                 
                                 <table data-test="component-table" className="table flex mdl-data-table mdl-js-data-table mdl-button--colored" >
+                             
                                     <thead>
                                         <tr>
                                  
@@ -237,10 +171,10 @@ export class Landing extends Component {
                         </div>
                     </div>
                 </div>
-                )
+            )
         }
     }
-}
+
 
 
 
