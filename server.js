@@ -11,9 +11,7 @@ connectDB();
 app.use(express.json({ extended: false }));
 
 // Define Routes
-app.use("/", (req, res, next) => {
-  res.send("server")
-});
+
 app.use('/api/items', require('./routes/api/items'))
 
 
