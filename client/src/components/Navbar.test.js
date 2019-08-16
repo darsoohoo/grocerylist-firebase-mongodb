@@ -4,8 +4,9 @@ import Navbar from './Navbar';
 
 
 
-describe('Header', () => {
+describe('Navbar', () => {
     it('renders header without crashing', () => {
         mount(<Navbar />);
     });
+    
 });

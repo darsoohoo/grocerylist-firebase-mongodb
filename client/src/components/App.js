@@ -3,6 +3,7 @@ import firebase from 'firebase';
 import Navbar from './Navbar'
 import Landing from './Landing'
 import LandingFb from './LandingFb'
+import Footer from './Footer'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
 
 
@@ -58,6 +59,7 @@ class App extends Component {
               <div>
                 < LandingFb firebase={firebase} />
                 <Landing />
+                <Footer />
               
               </div>
 

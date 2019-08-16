@@ -6,7 +6,7 @@ import LandingFb from './LandingFb';
 let landingFb = mount(<LandingFb  />);
 
 const defaultProps = {
-  
+  p
 }
 
 
