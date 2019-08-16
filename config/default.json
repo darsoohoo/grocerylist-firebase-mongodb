@@ -1,0 +1,4 @@
+
+{
+    "mongoURI": "mongodb+srv://darren123:darren123@devconnector-gn7vh.mongodb.net/grocerylist?retryWrites=true&w=majority"
+  }
