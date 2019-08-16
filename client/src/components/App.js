@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
-import Link from '@material-ui/core/Link'
 import Navbar from './Navbar'
 import Landing from './Landing'
 import LandingFb from './LandingFb'
