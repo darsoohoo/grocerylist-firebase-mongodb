@@ -68,7 +68,6 @@ export class Landing extends Component {
         }
 
         updateItem(id, newItem, checkboxValue) {
-            //e.preventDefault();
             let purchased;
 
             if(checkboxValue === true){ purchased = false
@@ -85,27 +84,10 @@ export class Landing extends Component {
    
             window.location = '/';
           }
-
-              // Proceed to next step
-            startEdit = () => {
-                const { editMode } = this.state;
-                this.setState({
-                    editMode: true
-                });
-            }
-
-            // Go back to prev step
-            stopEdit = () => {
-                const { editMode } = this.state;
-                this.setState({
-                    editMode: false
-                });
-            }
       
         
     render() {
 
-        const { editMode } = this.state;
         const buttonStyle = {
             visibility: "hidden"
         }    
