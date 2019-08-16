@@ -26,11 +26,6 @@ Install dependencies at the root directory and in the client directory.
 Use this command to start the app locally.
 Node will run on 5000 and React on 3000
 
-#optional
-### `npm start`
-
-Runs the Express app<br>
-Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
 
 #optional
 ### `npm test`
