@@ -130,9 +130,8 @@ export class Landing extends Component {
                                         id="item-input"
                                         name="itemInput"
                                         />
-                                    <label className="mdl-textfield__label" htmlFor="sample3">Enter an item...</label>
+                                    <label className="mdl-textfield__label" htmlFor="sample3">Enter grocery items</label>
                                     <input style={buttonStyle} type="submit"></input>
-                                    MongoDb
                                 </div>
                                 </form>                 
                                 <table data-test="component-table" className="table flex mdl-data-table mdl-js-data-table mdl-button--colored" >

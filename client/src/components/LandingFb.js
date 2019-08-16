@@ -23,7 +23,6 @@ class LandingFb extends Component {
             item.key = snapshot.key;
             this.setState({ items: this.state.items.concat( item ) })
         });
-
         this.itemsRef.on('child_removed', snapshot => {
             this.setState({ items: this.state.items.filter( item => item.key !== snapshot.key )})
         })
@@ -85,26 +84,21 @@ class LandingFb extends Component {
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                 <input  onChange={(e) => this.handleChange(e)}
                                     value={this.state.newItem}
-                                    id="outlined-name"
                                     margin="normal"
                                     variant="outlined"
                                     label="Grocery item"
-                                    className="item-input-table"
                                     id="item-input"
                                     name="newItem"
-            
-                                    class="mdl-textfield__input" 
+                                    className="mdl-textfield__input" 
                                     type="text" />
-                                <label class="mdl-textfield__label" for="sample3">Enter an item...</label>
+                                <label className="mdl-textfield__label" for="sample3">Enter house supplies</label>
                             </div>
                             </form>                 
  
                             <table data-test="component-table" className="table flex mdl-data-table mdl-js-data-table mdl-button--colored" >
-
                                 <thead>
-                                    Firebase
+                                    
                                     <tr>
-                                        <th></th>
                                         <th>#</th>
                                         <th className="name">Name</th>
                                         <th className="price">Purchased</th>
@@ -114,7 +108,6 @@ class LandingFb extends Component {
                                 <tbody>
                                 {this.state.items.map((item, index) => (
                                     <tr key={item.key}>
-                                        <td><button>Edit</button></td>
                                         <td>{index+1}</td>
                                         <td>{item.name}</td>
                                         <td>

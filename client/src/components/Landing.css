@@ -16,6 +16,10 @@
     margin-top: 50px;
 }
 
-.component-table {
-  width: auto;
+.mdl-textfield__input {
+  margin-left: 50%!important;
+}
+
+.mdl-textfield__label {
+  margin-left: 50%!important;
 }
