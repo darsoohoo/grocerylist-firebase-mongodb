@@ -4,6 +4,7 @@ import Navbar from './Navbar'
 import Landing from './Landing'
 import LandingFb from './LandingFb'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
+import Loader from './Loader';
 
 
 
@@ -19,7 +20,10 @@ firebase.initializeApp(config);
 
 
 class App extends Component {
-  state = { isSignedIn: false }
+  state = { 
+    isSignedIn: false,
+    isLoaded: false
+   }
   uiConfig = {
     signInFlow: "popup",
     signInOptions: [
@@ -35,7 +39,7 @@ class App extends Component {
   componentDidMount = () => {
 
     firebase.auth().onAuthStateChanged(user => {
-      this.setState({ isSignedIn: !!user})
+      this.setState({ isSignedIn: !!user, isLoaded: true})
     })
   }
 
@@ -44,12 +48,15 @@ class App extends Component {
   }
 
 
-
-
   render() {
     const appStyle = {
       marginBottom: "100px"
     }
+    const { isLoaded } = this.state;
+
+    if(!isLoaded) {
+      return <Loader />
+    } else {
       return (
         <div style={appStyle} className="App">
 
@@ -79,7 +86,8 @@ class App extends Component {
          
           )}
         </div>
-      );
+      )
+      };
     }
   }
 
