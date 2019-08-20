@@ -1,25 +1,25 @@
 .Aligner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .Aligner-item {
-    max-width: 50%;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  #input-form {
-      width: 100%;
-  }
+.Aligner-item {
+  max-width: 50%;
+}
 
-.component-landing{
-    margin-top: 50px;
+#input-form {
+  width: 100%;
+}
+
+.component-landing {
+  margin-top: 50px;
 }
 
 .mdl-textfield__input {
-  margin-left: 50%!important;
+  margin-left: 50% !important;
 }
 
 .mdl-textfield__label {
-  margin-left: 50%!important;
+  margin-left: 50% !important;
 }

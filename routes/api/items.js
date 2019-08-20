@@ -34,7 +34,7 @@ router.delete('/:id', (req, res) => {
 router.route('/update/:id').post((req, res) => {
   Item.findById(req.params.id)
     .then(item => {
-      item.item = req.body.item.item;
+      item.item = req.body.newItem;
       item.purchased = req.body.purchased;
       item.save()
         .then(() => res.json('Item updated!'))
